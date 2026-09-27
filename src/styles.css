@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --color-bg: #0c100e;
+  --color-elevated: #161c19;
+  --color-subtle: #1e2722;
+  --color-fg: #f4f1ea;
+  --color-muted: #a3aea6;
+  --color-faint: #6e7a72;
+  --color-line: #2c3833;
+  --color-accent: #f4f1ea;
+  --color-accent-fg: #0c100e;
+  --color-felt: #3d8f68;
+  --color-danger: #d4655c;
+  --color-ball-1: #e2c15a;
+  --color-ball-2: #2f62c2;
+  --color-ball-3: #c93a32;
+  --color-ball-4: #6d3d8a;
+  --color-ball-5: #e07a2f;
+  --color-ball-6: #2e7d4f;
+  --color-ball-7: #7a2e2a;
+  --color-ball-8: #141414;
+  --color-ball-9: #e2c15a;
+  --color-ball-face: #f7f4ee;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible {
+    outline: 2px solid var(--color-felt);
+    outline-offset: 2px;
+  }
+  input[type="checkbox"] {
+    accent-color: var(--color-felt);
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+}
+
+.dock {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+}
+
+.ball {
+  aspect-ratio: 1;
+  width: 100%;
+  border: 0;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  box-shadow: inset 0 -6px 10px rgb(0 0 0 / 0.28);
+  touch-action: manipulation;
+}
+.ball > span {
+  width: 38%;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: var(--color-ball-face);
+  color: var(--color-bg);
+  display: grid;
+  place-items: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.ball-1 { background: radial-gradient(circle at 32% 28%, color-mix(in oklab, white 42%, transparent), var(--color-ball-1) 48%); }
+.ball-2 { background: radial-gradient(circle at 32% 28%, color-mix(in oklab, white 42%, transparent), var(--color-ball-2) 48%); }
+.ball-3 { background: radial-gradient(circle at 32% 28%, color-mix(in oklab, white 42%, transparent), var(--color-ball-3) 48%); }
+.ball-4 { background: radial-gradient(circle at 32% 28%, color-mix(in oklab, white 42%, transparent), var(--color-ball-4) 48%); }
+.ball-5 { background: radial-gradient(circle at 32% 28%, color-mix(in oklab, white 42%, transparent), var(--color-ball-5) 48%); }
+.ball-6 { background: radial-gradient(circle at 32% 28%, color-mix(in oklab, white 42%, transparent), var(--color-ball-6) 48%); }
+.ball-7 { background: radial-gradient(circle at 32% 28%, color-mix(in oklab, white 42%, transparent), var(--color-ball-7) 48%); }
+.ball-8 { background: radial-gradient(circle at 32% 28%, color-mix(in oklab, white 28%, transparent), var(--color-ball-8) 46%); }
+.ball-9 {
+  background: linear-gradient(
+    180deg,
+    var(--color-ball-face) 0 18%,
+    var(--color-ball-9) 18% 82%,
+    var(--color-ball-face) 82% 100%
+  );
+}
+.ball-gone {
+  filter: grayscale(1) brightness(1.35);
+  opacity: 0.38;
+  box-shadow: none;
+}
+.ball-dead {
+  outline: 2px dashed var(--color-danger);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
